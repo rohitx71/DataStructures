@@ -1,6 +1,6 @@
 # https://www.geeksforgeeks.org/add-the-given-digit-to-a-number-stored-in-a-linked-list/
 
-from linkedlists.linked_list_ops import LinkedList
+from src.linkedlists.linked_list_ops import LinkedList
 
 
 class Llist(LinkedList):
