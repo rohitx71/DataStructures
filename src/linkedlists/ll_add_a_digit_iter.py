@@ -3,7 +3,7 @@
 from src.linkedlists.linked_list_ops import LinkedList
 
 
-class Llist(LinkedList):
+class AddDigit(LinkedList):
     def add_a_digit(self, val):
         node = self.head
         last_node = None
@@ -24,7 +24,7 @@ class Llist(LinkedList):
 
 
 if __name__ == '__main__':
-    llist = LinkedList()
+    llist = AddDigit()
     llist.append(9)
     llist.append(9)
     llist.append(9)
