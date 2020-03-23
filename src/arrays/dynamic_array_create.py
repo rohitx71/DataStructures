@@ -4,6 +4,7 @@ Creates python list from scratch
 """
 import ctypes
 
+
 class DynamicArray:
     def __init__(self):
         self.n = 0  # actual elements
@@ -41,3 +42,4 @@ if __name__ == "__main__":
     arr.append(3)
     print(arr.__len__())
     print(arr)
+    print(arr.__get_item__(1))

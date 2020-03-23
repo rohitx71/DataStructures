@@ -1,3 +1,10 @@
+"""
+Implement Stack using python
+https://runestone.academy/runestone/books/published/pythonds/BasicDS/ImplementingaStackinPython.html
+"""
+import ctypes
+
+
 class Stack:
     def __init__(self, size=5):
         self.A = []
