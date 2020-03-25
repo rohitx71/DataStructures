@@ -1,3 +1,8 @@
+"""
+
+"""
+
+
 class Node:
     def __init__(self, val, left=None, right=None):
         self.data = val
@@ -30,28 +35,61 @@ class Tree:
                 q.append(tmp.right)
 
     # replace with bottom most right most element
-    def delete(self, node):
-        if node.right:
-            res = self.delete(node.right)
-            if not res:
-                tmp = node.right
-                node.right = None
-                return tmp
-        if node.left:
-            self.delete(node.left)
-        return False
+    def delete(self, root, key):
+        if root:
+            if not root.left and not root.right:
+                if root.key == key:
+                    root = None
+                    return
+            q = list()
+            q.append(root)
+            key_node, tmp = None, None
+            while q:
+                tmp = q.pop(0)
+                if tmp.data == key:
+                    key_node = tmp
+                if tmp.left:
+                    q.append(tmp.left)
+                if tmp.right:
+                    q.append(tmp.right)
+            if key_node:
+                key_node.data = tmp.data
+                self.delete_leaf(root, tmp)
+
+    def delete_leaf(self, root, key):
+        q = list()
+        q.append(root)
+        while q:
+            tmp = q.pop(0)
+            if tmp is key:
+                tmp = None
+                return
+            if tmp.left:
+                if tmp.left is key:
+                    tmp.left = None
+                    return
+                q.append(tmp.left)
+            if tmp.right:
+                if tmp.right is key:
+                    tmp.right = None
+                    return
+                q.append(tmp.right)
 
 
 if __name__ == "__main__":
     t = Tree()
-    n = Node(5)
-    n.left = Node(7)
-    n.right = Node(6)
-    n.left.left = Node(3)
-    n.left.right = Node(11)
-    t.in_order(n)
-    t.insert(n, 9)
-    print("Inserted 9")
-    t.in_order(n)
-
+    root = Node(10)
+    root.left = Node(11)
+    root.left.left = Node(7)
+    root.left.right = Node(12)
+    root.right = Node(9)
+    root.right.left = Node(15)
+    root.right.right = Node(8)
+    print("The tree before the deletion:")
+    t.in_order(root)
+    key = 11
+    t.delete(root, key)
+    print()
+    print("The tree after the deletion;")
+    t.in_order(root)
 
